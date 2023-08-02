@@ -1,6 +1,6 @@
 package org.example.decorator;
 
-public class RepositoryDecorator<T> extends MockDeleteRepository<T> {
+public class AuditLogRepositoryDecorator<T> extends MockDeleteRepository<T> {
     @Override
     public boolean delete() {
         System.out.println("Audit logs saved before logging");

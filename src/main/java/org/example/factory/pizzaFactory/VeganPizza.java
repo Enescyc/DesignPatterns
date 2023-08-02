@@ -1,4 +1,4 @@
-package org.example.factory;
+package org.example.factory.pizzaFactory;
 
 public class VeganPizza implements IPizza {
     @Override

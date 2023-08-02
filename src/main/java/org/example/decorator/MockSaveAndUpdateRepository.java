@@ -1,6 +1,6 @@
 package org.example.decorator;
 
-public class MockJpaRepository<T> {
+public class MockSaveAndUpdateRepository<T> {
 
     public T save(T t) {
         System.out.println("Saved");

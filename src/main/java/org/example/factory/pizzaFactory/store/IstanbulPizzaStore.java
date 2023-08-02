@@ -1,4 +1,8 @@
-package org.example.factory;
+package org.example.factory.pizzaFactory.store;
+
+import org.example.factory.pizzaFactory.CheesePizza;
+import org.example.factory.pizzaFactory.IPizza;
+import org.example.factory.pizzaFactory.MixedPizza;
 
 public class IstanbulPizzaStore extends AbstractPizzaStore {
     @Override
