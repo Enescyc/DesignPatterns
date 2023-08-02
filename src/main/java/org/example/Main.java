@@ -9,6 +9,10 @@ import org.example.decorator.MockDeleteRepository;
 import org.example.factory.pizzaFactory.store.AnkaraPizzaStore;
 import org.example.factory.pizzaFactory.IPizza;
 import org.example.factory.pizzaFactory.store.IstanbulPizzaStore;
+import org.example.strategy.GarantiPaymentService;
+import org.example.strategy.PaymentOptions;
+import org.example.strategy.PaymentService;
+import org.example.strategy.YapiKrediPaymentService;
 
 
 class Customer {
@@ -65,5 +69,23 @@ public class Main {
         jsonBankApiAdapter.executeTransaction(transaction);
         xmlBankApiAdapter.executeTransaction(transaction);
 
+
+        // STRATEGY
+
+        PaymentOptions paymentOptions = new PaymentOptions();
+        paymentOptions.setCvv(111);
+        paymentOptions.setCardNumber("123556788");
+        paymentOptions.setOwnerName("enes");
+        paymentOptions.setAmount(10.05F);
+        paymentOptions.setExpirationDate("10-02-2024");
+        GarantiPaymentService garantiPaymentService = new GarantiPaymentService();
+        YapiKrediPaymentService yapiKrediPaymentService = new YapiKrediPaymentService();
+
+        PaymentService paymentService = new PaymentService(garantiPaymentService);
+
+        paymentService.pay(paymentOptions);
+        // We changed paymentService on Runtime
+        paymentService.setPaymentService(yapiKrediPaymentService);
+        paymentService.pay(paymentOptions);
     }
 }
